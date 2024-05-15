@@ -135,6 +135,11 @@ static const uint8_t ll_readSiliconID[] = {
 	0x21,0x00,0x00, // ld  hl, #0000
 	0x36,0xF0,      // ld  (hl), #0xF0
 
+	// Additional write to restore slot 0 to bank 0 - helps
+	// for hybrid mapper implementations which also
+	// support Codemaster/Korean/MSX bank switching
+	0x36,0x00,      // ld  (hl), #0x00
+
 	0xE1,           // pop hl (return value)
 
 	0xFB,           // ei
